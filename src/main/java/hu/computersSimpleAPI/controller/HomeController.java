@@ -3,10 +3,7 @@ package hu.computersSimpleAPI.controller;
 import hu.computersSimpleAPI.domain.Computer;
 import hu.computersSimpleAPI.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,5 +38,13 @@ public class HomeController {
         service.deleteComputer(id);
     }
 
+    @PatchMapping("/computers/{id}/{ram}")
+    public Computer updateComputer(@PathVariable("id")int id, @PathVariable("ram")int ram){
+    return service.updateComputer(id, ram);
+    }
 
+    @PutMapping("/computers/{id}")
+    public Computer replaceComputer(@PathVariable("id")int id, @RequestBody Computer computer){
+        return service.replaceComputer(id, computer);
+    }
 }
