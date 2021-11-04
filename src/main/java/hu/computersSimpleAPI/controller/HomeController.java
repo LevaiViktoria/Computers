@@ -3,6 +3,7 @@ package hu.computersSimpleAPI.controller;
 import hu.computersSimpleAPI.domain.Computer;
 import hu.computersSimpleAPI.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,10 @@ public class HomeController {
     public List<Computer> getComputerByManufacture(@PathVariable String manufacture){
         System.out.println("Man: "+manufacture);
         return service.getComputersByManufacture(manufacture);
+    }
+    @DeleteMapping("/computers/{id}")
+    public void deleteComputer(@PathVariable("id")int id){
+        service.deleteComputer(id);
     }
 
 
